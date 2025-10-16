@@ -1,3 +1,5 @@
+use prettytable::{Table, Row, Cell};
+
 fn main() {
     let my_age = 33;
     let mut fav_num: u8= 8;
@@ -22,6 +24,31 @@ fn main() {
     let tup: (u16, u16, u16) = (8 , 7, 6);
     let (a, b, c) = tup;
 
+    let student1 = ("Bob", 20, 8.5);
+    let student2 = ("Boban", 21, 9.5);
+    let student3 = ("Bobana", 22, 7.8);
+
+    let students = vec![student1, student2, student3];
+
+    let mut table = Table::new();
+
+    table.add_row(Row::new(vec![
+        Cell::new("Name"),
+        Cell::new("Age"),
+        Cell::new("Grade Average"),
+    ]));
+
+    for (name, age, grade) in &students {
+        table.add_row(Row::new(vec![
+            Cell::new(name),
+            Cell::new(&age.to_string()),
+            Cell::new(&format!("{:.2}", grade)),
+        ]));
+    }
+
+    let total: f64 = students.iter().map(|(_, _, g)| g).sum();
+    let avg_grade = total / students.len() as f64;
+
     println!("\nExercise 1");
     println!("My age is: {}", my_age);
     println!("Incremented fav number is: {}", fav_num);
@@ -41,4 +68,8 @@ fn main() {
 
     println!("\nExercise 3");
     println!("Suma je : {}, prosecna vrednost: {}, a proizvod: {}", a+b+c, (a+b+c)/3, a*b*c);
+
+    println!("\nExercise 4");
+    table.printstd();
+    println!("\nAverage grade of all students: {:.2}", avg_grade);
 }
