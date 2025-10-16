@@ -19,6 +19,9 @@ fn main() {
     let slovo: char = 'L';
     let smile = '😄';
 
+    let tup: (u16, u16, u16) = (8 , 7, 6);
+    let (a, b, c) = tup;
+
     println!("\nExercise 1");
     println!("My age is: {}", my_age);
     println!("Incremented fav number is: {}", fav_num);
@@ -35,4 +38,7 @@ fn main() {
     println!("Bool false: {}", f);
     println!("Jedno slovo: {}", slovo);
     println!("Jedan smiley: {}", smile);
+
+    println!("\nExercise 3");
+    println!("Suma je : {}, prosecna vrednost: {}, a proizvod: {}", a+b+c, (a+b+c)/3, a*b*c);
 }
